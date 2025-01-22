@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h2>You have been logged out</h2>
+    <button id="loginBtnLogout">Login</button>
+</div>
+
+<script>
+  const loginBtnLogout = document.getElementById("loginBtnLogout");
+loginBtnLogout?.addEventListener("click", async () => {
+  window.location.href = "index.html";
+});
+</script>
+</body>
+</html>
