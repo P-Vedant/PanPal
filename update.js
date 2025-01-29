@@ -1,8 +1,7 @@
 const { createClient } = window.supabase;
 
-const supabaseUrl = "https://skkarudeuhrkxffznamx.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNra2FydWRldWhya3hmZnpuYW14Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc0NjgxOTMsImV4cCI6MjA1MzA0NDE5M30.qf4efYl7CT61AvVnZJ833YVtKrLzPD2IApcg4e4GoXM";
-
+const supabaseUrl = "https://bhfttxqkobtckescbnyy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoZnR0eHFrb2J0Y2tlc2Nibnl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc3ODY3OTEsImV4cCI6MjA0MzM2Mjc5MX0.xrOUNxM4tchKJHCTiEKhcM-kH1k0nTmJh9gNvMp5dOk"
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const displayBtn = document.getElementById("displayBtn");
@@ -39,15 +38,15 @@ updateBtn?.addEventListener("click", async () => {
     return;
   }
 
-
+  // Update the user's profile in the table using 'id'
   const { data, error } = await supabase
-    .from("Users") 
+    .from("table") // Ensure the table name is correct
     .update({
       firstName: firstName || null,
       lastName: lastName || null,
       city: city || null,
     })
-    .eq("id", session.user.id); 
+    .eq("id", session.user.id); // Use 'id' column to filter
   
   if (error) {
     document.getElementById("error-msg").textContent =

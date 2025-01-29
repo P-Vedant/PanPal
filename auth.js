@@ -1,8 +1,7 @@
 const { createClient } = window.supabase;
 
-const supabaseUrl = "https://skkarudeuhrkxffznamx.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNra2FydWRldWhya3hmZnpuYW14Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc0NjgxOTMsImV4cCI6MjA1MzA0NDE5M30.qf4efYl7CT61AvVnZJ833YVtKrLzPD2IApcg4e4GoXM";
-
+const supabaseUrl = "https://bhfttxqkobtckescbnyy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoZnR0eHFrb2J0Y2tlc2Nibnl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc3ODY3OTEsImV4cCI6MjA0MzM2Mjc5MX0.xrOUNxM4tchKJHCTiEKhcM-kH1k0nTmJh9gNvMp5dOk"
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const loginBtn = document.getElementById("loginBtn");
@@ -48,7 +47,7 @@ signupBtn?.addEventListener("click", async () => {
   if (signUpError) {
     document.getElementById("error-msg").textContent = signUpError.message;
   } else {
-    const { error: insertError } = await supabase.from("Users").insert([
+    const { error: insertError } = await supabase.from("table").insert([
       {
         firstName: firstName,
         lastName: lastName,
