@@ -14,6 +14,12 @@ logoutBtnDisplay?.addEventListener("click", async () => {
   window.location.href = "logout.html";
 });
 
+const savedBtn = document.getElementById("viewRecipies");
+logoutBtnDisplay?.addEventListener("click", async () => {
+  window.location.href = "saved.html";
+});
+
+
 const profileDataDiv = document.getElementById('profile-data');
 
 async function getSession() {
@@ -81,3 +87,16 @@ async function fetchProfiles() {
 fetchProfiles().catch((error) => {
     console.log('Error', error);
 })
+
+async function setHeader(){
+    const session = await getSession()
+    if (session){
+        const userProfile = await getUserProfile()
+        if (userProfile){
+            const header = document.getElementById("savedHeader");
+            header.textContent = userProfile[0].firstName + "'s Saved Recipies"
+        }
+    }
+}
+
+
