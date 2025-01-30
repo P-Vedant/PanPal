@@ -2,10 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
+<body class="profile-page">
+
+    <nav class = "navbar">
+        <ul>
+            <li><a href="display.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="index.html">Saved Recipies</a></li>
+            <li><a href="index.html">Suggested Recipies</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="profile-id">
+        <h2>Your Profile</h2>
+        <div id="profile-data"></div>
+        <button class="profile-buttons" id="updateBtn">Update Info</button>
+        <button class="profile-buttons" id="logoutBtnDisplay">Logout</button>
+    </div>
+
+    <div class="box"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="data.js"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+
+
+
 body{
     margin: 0px;
 }
@@ -27,4 +30,131 @@ h1{
 }
 .navbar li{
     float: left;
+}
+
+.profile-page {
+    background: linear-gradient(to right, #0f172a, #1e293b); 
+    color: white; 
+    min-height: 100vh;
+}
+
+
+#profile-id {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    
+    padding: 2em;
+    width: 500px;
+    height: 300px;
+    background: black; /* Keeps the original solid black */
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures animation stays within bounds */
+
+    /* Animated glowing shadow */
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
+    animation: glowAnimation 4s linear infinite;
+}
+
+@keyframes glowAnimation {
+    0% {
+        box-shadow: 0 0 10px #00ccff, 0 0 20px #d500f9;
+    }
+    50% {
+        box-shadow: 0 0 20px #d500f9, 0 0 40px #00ccff;
+    }
+    100% {
+        box-shadow: 0 0 10px #00ccff, 0 0 20px #d500f9;
+    }
+}
+
+.container h2 {
+    color: rgb(226, 226, 226);
+    text-shadow: 2px 2px black;
+    font-size: 3em;
+}
+
+.profile-buttons {
+    background: black; 
+    color: white; 
+    border: 2px solid white; 
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.profile-buttons:hover {
+    background: linear-gradient(90deg, #00ccff, #d500f9);
+    color: white; 
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(213, 0, 249, 0.5); 
+    transform: rotate(7deg);
+}
+
+
+.profile-buttons:active {
+    background: linear-gradient(90deg, #00ccff, #d500f9);
+    color: white; 
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(213, 0, 249, 0.5); 
+}
+
+/* Navbar Styling */
+.navbar {
+
+    padding: 0;
+    position: fixed; /* Keeps the navbar fixed at the top of the page */
+    top: 0;
+    right: 0; /* Keep it aligned to the right */
+    width: 100%; /* Ensures the navbar takes up the full width */
+    z-index: 999; /* Ensures navbar is above content */
+}
+
+/* Navbar List Styling */
+.navbar ul {
+    list-style-type: none; /* Removes default list styles */
+    background: transparent; /* Set the navbar background to black */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Aligns the list items horizontally */
+    justify-content: flex-end; /* Aligns the items to the right */
+}
+
+/* Navbar Links Styling */
+.navbar a {
+    display: block;
+    padding: 30px 100px;
+    text-decoration: none;
+    color: white; /* Default text color */
+    font-size: 16px; /* Text size */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    position: relative;
+    border-radius: 5px; /* Optional: rounded corners for the button */
+}
+
+/* Hover Effect for Navbar Links */
+.navbar a:hover {
+    background: transparent;
+    color: linear-gradient(90deg, #00ccff, #d500f9); /* Text color change on hover */
+    border: 2px solid white; /* White border */
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(213, 0, 249, 0.5); /* Glow effect */
+    transform: rotate(2deg);
+}
+
+/* Active Button Effect */
+.navbar a:active {
+    background: transparent;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.7), 0 0 20px rgba(213, 0, 249, 0.7); /* More intense glow on active */
+    transform: rotate(45deg);
+}
+
+/* Navbar Items */
+.navbar li {
+    margin: 0 10px; /* Space between each navbar item */
+    transition: all 0.3s ease;
 }
