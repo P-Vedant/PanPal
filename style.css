@@ -1,6 +1,7 @@
 body{
     margin: 0px;
-    background-color:white
+    background-color:white;
+    font-family: 'Lato', sans-serif;
 }
 
 main{
@@ -12,38 +13,89 @@ h1{
     margin-top: 20px;
     text-align: center;
     font-size: 50px;
-    color: #000000
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.navbar ul{
+.navbar {
+    display: flex;
+    align-items: center; /* Vertically align items */
+    height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 20px; /* Add padding to keep space */
+}
+
+.navbar ul {
     list-style-type: none;
-    background-color: hsl(0, 0%, 0%);
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+    display: flex;
+    flex: 1; /* Ensures the nav items take available space */
+    justify-content: space-evenly; /* Evenly distribute the links */
+    margin: 0;
+    padding: 0;
 }
 
-.navbar a{
-    color: white;
+.navbar li {
+    display: flex;
+    margin-top: 10px;
+}
+
+.navbar a {
+    color: black;
     text-decoration: none;
-    padding: 15px;
-    display: block;
-    text-align: center;
+    padding: 15px 20px;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
 }
 
-.navbar a:hover{
-    background-color: hsl(0, 0%, 10%);
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px; /* Adjust to control distance from text */
+    width: 100%;
+    height: 3px;
+    background-color: #D72638;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
 }
 
-.navbar li{
-    float: left;
+.navbar a:hover::after, 
+.navbar a.active::after {
+    transform: scaleX(1); /* Makes the underline visible */
+}
+
+.navbar img {
+    height: 75px;
+    width: auto;
+    margin-right: 20px;
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Creates responsive grid */
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Creates responsive grid */
     gap: 100px; /* Spacing between boxes */
     padding: 20px;
+}
+
+/* Adapt to smaller screens */
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium-sized screens */
+    }
+}
+
+@media (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
 }
 
 .box {
@@ -54,4 +106,76 @@ h1{
     box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to the bottom-left */
     min-width: 250px; /* Minimum width for each box */
     min-height: 250px
+}
+
+/* Featured Grid Container */
+.highlight-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Makes it responsive */
+    gap: 100px; /* Spacing between boxes */
+    padding: 20px;
+    border-bottom: 5px solid #000000; /* Adds a nice separator */
+    margin-bottom: 20px; /* Adds spacing below the highlight grid */
+    background-color: #f0f0f0; /* Optional: gives a subtle background to highlight section */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a slight shadow to the entire bar */
+}
+
+/* Highlight Box */
+.highlight-box {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    min-height: 250px;
+    transition: transform 0.3s ease; /* Adds hover effect for a smooth zoom */
+}
+
+/* Highlight Box Hover Effect */
+.highlight-box:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+#profile-contain {
+    margin: 0 auto;    
+    margin-top: 100px;
+    background-color: #f7f7f7; /* Light gray box */
+    padding: 20px;
+    border-radius: 10px;
+    width: 750px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#profile-contain p {
+    font-size: 35px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Buttons */
+
+.profile-buttons {
+    flex: 1; /* Makes the buttons take equal space */
+    margin: 0 10px; /* Adds space between the buttons */
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.profile-buttons:hover {
+    background-color: #D72638;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1, #profile-data, .profile-buttons {
+        margin-left: 20px;
+    }
 }

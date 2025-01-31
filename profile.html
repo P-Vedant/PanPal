@@ -9,21 +9,25 @@
 
     <nav class = "navbar">
         <ul>
+            <img src="logo.png">
             <li><a href="display.html">Home</a></li>
             <li><a href="profile.html">Profile</a></li>
-            <li><a href="saved.html">Saved Recipies</a></li> <!--Create custom first name header ex: "Evan's Saved Recipies" -->
+            <li><a href="saved.html">Saved Recipies</a></li> 
             <li><a href="suggest.html">Suggested Recipies</a></li>
         </ul>
     </nav>
-    <h1>Your Profile</h1>
-    <div class="box">
+    <div id = "profile-contain">
+
         <div id="profile-data">
 
         </div>
+
+            <button class="profile-buttons" id="updateBtn">Update Info</button>
+            <button class="profile-buttons" id="logoutBtnDisplay">Logout</button>
         
-        <button class="profile-buttons" id="updateBtn">Update Info</button>
-        <button class="profile-buttons" id="logoutBtnDisplay">Logout</button>
     </div>
+        
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="data.js"></script>
