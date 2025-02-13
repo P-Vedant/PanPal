@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="profile-page">
+
+    <nav class = "navbar">
+        <ul>
+            <img src="logo.png">
+            <li><a href="display.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="saved.html">Saved Recipies</a></li> 
+            <li><a href="suggest.html">Suggested Recipies</a></li>
+        </ul>
+    </nav>
+
+    <div class = "prompts">
+        <input class = "txtCreate" id = "name" type = text placeholder= "Insert Recipe Name">
+        <input class = "txtCreate" id = "ingredients" type = text placeholder= "Insert Ingredients">
+        <input class = "txtCreate" id = "instructions" type = text placeholder= "Insert Instructions">
+        <button id = "recCreate">Create!</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src = "recipe.js"></script>
+</body>
+</html>

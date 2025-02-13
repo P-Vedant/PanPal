@@ -105,7 +105,13 @@ h1{
     border-radius: 8px; /* Rounded corners for the box */
     box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to the bottom-left */
     min-width: 250px; /* Minimum width for each box */
-    min-height: 250px
+    min-height: 250px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.box:hover {
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Featured Grid Container */
@@ -129,6 +135,7 @@ h1{
     box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2);
     min-width: 250px;
     min-height: 250px;
+    cursor: pointer;
     transition: transform 0.3s ease; /* Adds hover effect for a smooth zoom */
 }
 
@@ -178,4 +185,22 @@ h1{
     h1, #profile-data, .profile-buttons {
         margin-left: 20px;
     }
+}
+
+.new-recipe{
+    text-align: center;
+}
+
+.prompts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+}
+
+.txtCreate {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

@@ -14,12 +14,6 @@ logoutBtnDisplay?.addEventListener("click", async () => {
   window.location.href = "logout.html";
 });
 
-const savedBtn = document.getElementById("viewRecipies");
-logoutBtnDisplay?.addEventListener("click", async () => {
-  window.location.href = "saved.html";
-});
-
-
 const profileDataDiv = document.getElementById('profile-data');
 
 async function getSession() {
@@ -42,7 +36,7 @@ getSession().then(session => {
 async function getUserProfile() {
     try {
         // Fetch user profile from the 'Users' table in Supabase
-        const { data: userProfile, error } = await supabase.from("table").select('*');
+        const { data: userProfile, error } = await supabase.from("users").select('*');
 
         // Handle any errors that occur during the query
         if (error) {
@@ -120,6 +114,11 @@ document.addEventListener("DOMContentLoaded", function() {
             // Save active tab in local storage
             localStorage.setItem("activeTab", this.getAttribute("href"));
         });
+    });
+
+    const newRec = document.getElementById("newRec");
+        newRec?.addEventListener("click", async () => {
+             window.location.href = "create.html";
     });
 });
 

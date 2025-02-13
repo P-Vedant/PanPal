@@ -40,7 +40,7 @@ updateBtn?.addEventListener("click", async () => {
 
   // Update the user's profile in the table using 'id'
   const { data, error } = await supabase
-    .from("table") // Ensure the table name is correct
+    .from("users") // Ensure the table name is correct
     .update({
       firstName: firstName || null,
       lastName: lastName || null,
