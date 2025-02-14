@@ -14,6 +14,12 @@ logoutBtnDisplay?.addEventListener("click", async () => {
   window.location.href = "logout.html";
 });
 
+const savedBtn = document.getElementById("viewRecipies");
+logoutBtnDisplay?.addEventListener("click", async () => {
+  window.location.href = "saved.html";
+});
+
+
 const profileDataDiv = document.getElementById('profile-data');
 
 async function getSession() {
@@ -81,3 +87,39 @@ async function fetchProfiles() {
 fetchProfiles().catch((error) => {
     console.log('Error', error);
 })
+
+async function setHeader(){
+    const session = await getSession()
+    if (session){
+        const userProfile = await getUserProfile()
+        if (userProfile){
+            const header = document.getElementById("savedHeader");
+            header.textContent = userProfile[0].firstName + "'s Saved Recipies"
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    // Check for stored active tab in local storage
+    let activeTab = localStorage.getItem("activeTab");
+
+    if (activeTab) {
+        document.querySelector(`.navbar a[href='${activeTab}']`)?.classList.add("active");
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function() {
+            // Remove 'active' class from all links
+            navLinks.forEach(nav => nav.classList.remove("active"));
+
+            // Add 'active' class to the clicked link
+            this.classList.add("active");
+
+            // Save active tab in local storage
+            localStorage.setItem("activeTab", this.getAttribute("href"));
+        });
+    });
+});
+

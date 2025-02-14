@@ -9,21 +9,25 @@
 
     <nav class = "navbar">
         <ul>
+            <img src="logo.png">
             <li><a href="display.html">Home</a></li>
             <li><a href="profile.html">Profile</a></li>
-            <li><a href="index.html">Saved Recipies</a></li>
-            <li><a href="index.html">Suggested Recipies</a></li>
+            <li><a href="saved.html">Saved Recipies</a></li> 
+            <li><a href="suggest.html">Suggested Recipies</a></li>
         </ul>
     </nav>
+    <div id = "profile-contain">
 
-    <div class="container" id="profile-id">
-        <h2>Your Profile</h2>
-        <div id="profile-data"></div>
-        <button class="profile-buttons" id="updateBtn">Update Info</button>
-        <button class="profile-buttons" id="logoutBtnDisplay">Logout</button>
+        <div id="profile-data">
+
+        </div>
+
+            <button class="profile-buttons" id="updateBtn">Update Info</button>
+            <button class="profile-buttons" id="logoutBtnDisplay">Logout</button>
+        
     </div>
-
-    <div class="box"></div>
+        
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="data.js"></script>

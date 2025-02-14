@@ -2,10 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Saved Recipies</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class = "navbar">
+        <ul>
+            <img src="logo.png">
+            <li><a href="display.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="saved.html">Saved Recipies</a></li> <!--Create custom first name header ex: "Evan's Saved Recipies" -->
+            <li><a href="suggest.html">Suggested Recipies</a></li>
+        </ul>
+    </nav>
     
+    <h1 id = savedHeader> Your Saved Recipies </h1>
+
+    <div class="grid-container">
+        <div class="box">
+            <img src="image1.jpg" alt="Image 1">
+            <p class="name">Name 1</p>
+        </div>
+        <div class="box">
+            <img src="image2.jpg" alt="Image 2">
+            <p class="name">Name 2</p>
+        </div>
+        <div class="box">
+            <img src="image3.jpg" alt="Image 3">
+            <p class="name">Name 3</p>
+        </div>
+        <!-- Add more boxes as needed -->
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script  src="data.js"></script>
 </body>
 </html>
+</body>

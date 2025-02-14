@@ -1,160 +1,181 @@
-
-
-
 body{
     margin: 0px;
+    background-color:white;
+    font-family: 'Lato', sans-serif;
 }
+
 main{
     margin-left: 20px;
     margin-right: 20px;
 }
+
 h1{
+    margin-top: 20px;
     text-align: center;
+    font-size: 50px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
 }
-.navbar ul{
-    list-style-type: none;
-    background-color: hsl(0, 0%, 25%);
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
-}
-.navbar a{
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    display: block;
-    text-align: center;
-}
-.navbar a:hover{
-    background-color: hsl(0, 0%, 10%);
-}
-.navbar li{
-    float: left;
-}
-
-.profile-page {
-    background: linear-gradient(to right, #0f172a, #1e293b); 
-    color: white; 
-    min-height: 100vh;
-}
-
-
-#profile-id {
-    position: absolute;
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    
-    padding: 2em;
-    width: 500px;
-    height: 300px;
-    background: black; 
-    text-align: center;
-    border-radius: 10px;
-    overflow: hidden;
-
-   
-    box-shadow: 0 0 20px rgba(0, 204, 255, 0.5);
-    animation: glowAnimation 4s linear infinite;
-}
-
-@keyframes glowAnimation {
-    0% {
-        box-shadow: 0 0 10px #00ccff, 0 0 20px #d500f9;
-    }
-    50% {
-        box-shadow: 0 0 20px #d500f9, 0 0 40px #00ccff;
-    }
-    100% {
-        box-shadow: 0 0 10px #00ccff, 0 0 20px #d500f9;
-    }
-}
-
-.container h2 {
-    color: rgb(226, 226, 226);
-    text-shadow: 2px 2px black;
-    font-size: 3em;
-}
-
-.profile-buttons {
-    background: black; 
-    color: white; 
-    border: 2px solid white; 
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-}
-
-
-.profile-buttons:hover {
-    background: linear-gradient(90deg, #00ccff, #d500f9);
-    color: white; 
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(213, 0, 249, 0.5); 
-    transform: rotate(7deg);
-}
-
-
-.profile-buttons:active {
-    background: linear-gradient(90deg, #00ccff, #d500f9);
-    color: white; 
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(213, 0, 249, 0.5); 
-}
-
 
 .navbar {
-
-    padding: 0;
-    position: fixed; 
-    top: 0;
-    right: 0;
-    width: 100%; 
-    z-index: 999; 
+    display: flex;
+    align-items: center; /* Vertically align items */
+    height: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 20px; /* Add padding to keep space */
 }
-
 
 .navbar ul {
-    list-style-type: none; 
-    background: transparent;
+    list-style-type: none;
+    display: flex;
+    flex: 1; /* Ensures the nav items take available space */
+    justify-content: space-evenly; /* Evenly distribute the links */
     margin: 0;
     padding: 0;
-    display: flex; 
-    justify-content: flex-end; 
 }
-
-
-.navbar a {
-    display: block;
-    padding: 30px 100px;
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    position: relative;
-    border-radius: 5px; 
-}
-
-
-.navbar a:hover {
-    background: transparent;
-    color: linear-gradient(90deg, #00ccff, #d500f9);
-    border: 2px solid white; /* White border */
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 0 0 20px rgba(213, 0, 249, 0.5);
-    transform: rotate(2deg);
-}
-
-
-.navbar a:active {
-    background: transparent;
-    color: white;
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.7), 0 0 20px rgba(213, 0, 249, 0.7); 
-    transform: rotate(45deg);
-}
-
 
 .navbar li {
-    margin: 0 10px; 
-    transition: all 0.3s ease;
+    display: flex;
+    margin-top: 10px;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+}
+
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 5px; /* Adjust to control distance from text */
+    width: 100%;
+    height: 3px;
+    background-color: #D72638;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover::after, 
+.navbar a.active::after {
+    transform: scaleX(1); /* Makes the underline visible */
+}
+
+.navbar img {
+    height: 75px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Creates responsive grid */
+    gap: 100px; /* Spacing between boxes */
+    padding: 20px;
+}
+
+/* Adapt to smaller screens */
+@media (max-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium-sized screens */
+    }
+}
+
+@media (max-width: 800px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+}
+
+.box {
+    background-color: #f0f0f0; /* Background for each box */
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px; /* Rounded corners for the box */
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to the bottom-left */
+    min-width: 250px; /* Minimum width for each box */
+    min-height: 250px
+}
+
+/* Featured Grid Container */
+.highlight-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Makes it responsive */
+    gap: 100px; /* Spacing between boxes */
+    padding: 20px;
+    border-bottom: 5px solid #000000; /* Adds a nice separator */
+    margin-bottom: 20px; /* Adds spacing below the highlight grid */
+    background-color: #f0f0f0; /* Optional: gives a subtle background to highlight section */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a slight shadow to the entire bar */
+}
+
+/* Highlight Box */
+.highlight-box {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px;
+    min-height: 250px;
+    transition: transform 0.3s ease; /* Adds hover effect for a smooth zoom */
+}
+
+/* Highlight Box Hover Effect */
+.highlight-box:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+#profile-contain {
+    margin: 0 auto;    
+    margin-top: 100px;
+    background-color: #f7f7f7; /* Light gray box */
+    padding: 20px;
+    border-radius: 10px;
+    width: 750px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#profile-contain p {
+    font-size: 35px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Buttons */
+
+.profile-buttons {
+    flex: 1; /* Makes the buttons take equal space */
+    margin: 0 10px; /* Adds space between the buttons */
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.profile-buttons:hover {
+    background-color: #D72638;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    h1, #profile-data, .profile-buttons {
+        margin-left: 20px;
+    }
 }
