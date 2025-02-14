@@ -1,12 +1,113 @@
 body{
     margin: 0px;
+
+    justify-content: center;
     background-color:white;
     font-family: 'Lato', sans-serif;
+    align-items: center;
 }
 
 main{
     margin-left: 20px;
     margin-right: 20px;
+}
+
+.log{
+    margin-left: 1100px;
+    width: 40px;
+    margin-top: 40px;
+}
+
+
+#newRec{
+    width: 10%;
+    padding: 0.75rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #FFA500, #FFD700);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#newRec:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(90deg, #FF8C00, #FFC300);
+}
+
+
+
+
+.cont {
+   
+    background: rgba(255, 255, 255, 0.85);
+    padding: 2rem;
+    border-radius: 15px;
+    position: absolute;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    left: 40%;
+    max-width: 400px;
+    margin-top: 50px; 
+}
+
+.cont h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.cont input {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cont input:focus {
+    outline: none;
+    border: 2px solid #FFA500;
+}
+
+.cont button {
+    width: 48%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #FFA500, #FFD700);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cont button:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(90deg, #FF8C00, #FFC300);
+}
+
+.cont #error-msg {
+    margin-top: 1rem;
+    color: red;
+    font-size: 0.9rem;
+}
+
+
+#welcome{
+    margin-top: 17%;
+    margin-left:  43%;
+    font-size: 50px;
+    font-family: "Jost", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: Jost;
 }
 
 h1{
@@ -19,18 +120,21 @@ h1{
 
 .navbar {
     display: flex;
-    align-items: center; /* Vertically align items */
+    align-items: center; 
     height: 80px;
     font-size: 20px;
     font-weight: bold;
-    padding: 0 20px; /* Add padding to keep space */
+    padding: 0 20px; 
+    border-bottom: 5px solid #FF8C00;
+    padding-bottom: 15px;
 }
+
 
 .navbar ul {
     list-style-type: none;
     display: flex;
-    flex: 1; /* Ensures the nav items take available space */
-    justify-content: space-evenly; /* Evenly distribute the links */
+    flex: 1; 
+    justify-content: space-evenly; 
     margin: 0;
     padding: 0;
 }
@@ -53,7 +157,7 @@ h1{
     content: "";
     position: absolute;
     left: 0;
-    bottom: 5px; /* Adjust to control distance from text */
+    bottom: 5px; 
     width: 100%;
     height: 3px;
     background-color: #D72638;
@@ -61,9 +165,10 @@ h1{
     transition: transform 0.3s ease-in-out;
 }
 
+
 .navbar a:hover::after, 
 .navbar a.active::after {
-    transform: scaleX(1); /* Makes the underline visible */
+    transform: scaleX(1); 
 }
 
 .navbar img {
@@ -74,28 +179,49 @@ h1{
 
 #grid-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Creates responsive grid */
-    gap: 100px; /* Spacing between boxes */
+    grid-template-columns: repeat(4, minmax(200px, 1fr)); 
+    gap: 100px; 
     padding: 20px;
 }
 
 /* Adapt to smaller screens */
 @media (max-width: 1200px) {
     .grid-container {
-        grid-template-columns: repeat(3, 1fr); /* 3 columns on medium-sized screens */
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 
 @media (max-width: 800px) {
     .grid-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
 @media (max-width: 500px) {
     .grid-container {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
+        grid-template-columns: 1fr; 
     }
+}
+
+#explore{
+margin-left: 46%;
+width: 10%;
+padding: 0.75rem;
+margin-top: 1rem;
+border: none;
+border-radius: 8px;
+background: linear-gradient(90deg, #FFA500, #FFD700);
+color: white;
+font-size: 1rem;
+cursor: pointer;
+transition: transform 0.2s ease;
+font-size: 20px;
+
+}
+
+#explore:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(90deg, #FF8C00, #FFC300);
 }
 
 .box {
@@ -191,12 +317,7 @@ h1{
     text-align: center;
 }
 
-.prompts {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 300px;
-}
+
 
 .txtCreate {
     padding: 8px;
@@ -204,3 +325,5 @@ h1{
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+
