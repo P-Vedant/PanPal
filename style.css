@@ -72,7 +72,7 @@ h1{
     margin-right: 20px;
 }
 
-.grid-container {
+#grid-container {
     display: grid;
     grid-template-columns: repeat(4, minmax(200px, 1fr)); /* Creates responsive grid */
     gap: 100px; /* Spacing between boxes */

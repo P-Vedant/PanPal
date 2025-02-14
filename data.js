@@ -22,11 +22,10 @@ async function getSession() {
         console.log("Error getting session:", error);
         return null;
     }
-    console.log("Session data:", data); // Log the session data to inspect
-    return data.session;  // Ensure session is returned
+    console.log("Session data:", data);
+    return data.session;
 }
 
-//Call the async function
 getSession().then(session => {
     console.log(session);
 }).catch(error => {
@@ -35,25 +34,21 @@ getSession().then(session => {
 
 async function getUserProfile() {
     try {
-        // Fetch user profile from the 'Users' table in Supabase
         const { data: userProfile, error } = await supabase.from("users").select('*');
 
-        // Handle any errors that occur during the query
         if (error) {
             console.error("Error fetching user profile:", error);
             return null;
         }
 
-        // If no profiles are found, return null
         if (!userProfile || userProfile.length === 0) {
             console.log("No user profile found.");
             return null;
         }
 
-        console.log("User Profile Data:", userProfile);  // Log the profile data for debugging
+        console.log("User Profile Data:", userProfile);
         return userProfile;
     } catch (error) {
-        // Catch and log any unexpected errors that occur
         console.error("Unexpected error fetching user profile:", error);
         return null;
     }
@@ -95,8 +90,6 @@ async function setHeader(){
 
 document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".navbar a");
-
-    // Check for stored active tab in local storage
     let activeTab = localStorage.getItem("activeTab");
 
     if (activeTab) {
@@ -105,13 +98,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     navLinks.forEach(link => {
         link.addEventListener("click", function() {
-            // Remove 'active' class from all links
             navLinks.forEach(nav => nav.classList.remove("active"));
-
-            // Add 'active' class to the clicked link
             this.classList.add("active");
-
-            // Save active tab in local storage
             localStorage.setItem("activeTab", this.getAttribute("href"));
         });
     });
@@ -122,4 +110,78 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+async function fetchSavedRecipes() {
+    const session = await getSession();
+    if (!session || !session.user || !session.user.id) {
+      console.error("No logged-in user found or user ID is missing.");
+      return [];
+    }
+  
+    try {
+      const { data: savedRecipeIds, error: savedRecipeError } = await supabase
+        .from("saved_recipes")
+        .select("recipe_id")
+        .eq("user_id", session.user.id);
+  
+      if (savedRecipeError) {
+        console.error("Error fetching saved recipe IDs:", savedRecipeError);
+        return [];
+      }
+  
+      if (!savedRecipeIds || savedRecipeIds.length === 0) {
+        console.log("No saved recipes found.");
+        return [];
+      }
+      const recipeIds = savedRecipeIds.map(item => item.recipe_id);
+  
+      const { data: recipes, error: recipeError } = await supabase
+        .from("recipes")
+        .select("id, name, ingredients, instructions")
+        .in("id", recipeIds); 
+  
+      if (recipeError) {
+        console.error("Error fetching recipe details:", recipeError);
+        return [];
+      }
+  
+      return recipes;
+    } catch (error) {
+      console.error("Unexpected error fetching saved recipes:", error);
+      return [];
+    }
+  }
+  
+  async function renderSavedRecipes() {
+    const savedRecipes = await fetchSavedRecipes();
+  
+    const recipesContainer = document.getElementById("grid-container");
+    if (!recipesContainer) {
+      console.error('Element with ID "grid-container" not found.');
+      return; 
+    }
+  
+    if (savedRecipes.length === 0) {
+      recipesContainer.innerHTML = "<p>No saved recipes found.</p>";
+      return;
+    }
+  
+    recipesContainer.innerHTML = "";
 
+    savedRecipes.forEach(recipe => {
+      const recipeDiv = document.createElement("div");
+      recipeDiv.classList.add("box");
+
+      recipeDiv.innerHTML = `
+        <h3>${recipe.name}</h3>
+        <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
+        <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+      `;
+      recipesContainer.appendChild(recipeDiv);
+    });
+  }
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    renderSavedRecipes().catch((error) => {
+      console.log('Error rendering saved recipes:', error);
+    });
+  });
