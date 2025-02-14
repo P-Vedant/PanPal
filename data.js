@@ -75,6 +75,10 @@ async function fetchProfiles() {
         const userProfile = await getUserProfile();
         if (userProfile) {
             console.log('User Profile', userProfile);
+
+            const userFirstName = userProfile[0].firstName;
+            document.getElementById('welcome').innerHTML = `Welcome to PanPal, ${userFirstName}!`;
+            
             profileDataDiv.innerHTML = `
                 <p><strong>First Name:</strong> ${userProfile[0].firstName}</p>
                 <p><strong>Last Name:</strong> ${userProfile[0].lastName}</p>
@@ -207,3 +211,5 @@ async function fetchSavedRecipes() {
       console.log('Error rendering saved recipes:', error);
     });
   });
+
+  

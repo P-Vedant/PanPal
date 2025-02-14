@@ -6,19 +6,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class = "navbar">
+    <nav class="navbar">
         <ul>
             <img src="logo.png">
-            <li><a href="display.html">Home</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="saved.html">Saved Recipies</a></li>
-            <li><a href="suggest.html">Suggested Recipies</a></li>
+            <li><a href="display.html" id="homeLink">Home</a></li>
+            <li><a href="profile.html" id="profileLink">Profile</a></li>
+            <li><a href="saved.html" id="savedLink">Saved Recipies</a></li>
+            <li><a href="suggest.html" id="suggestLink">Suggested Recipies</a></li>
         </ul>
     </nav>
+    
+    <div class="container">
+        <h2 id="welcome">Welcome to PanPal!</h2>
+        <button id="explore">Explore Recipes</button>
+    </div>
+    
 
-<div class="container">
-    <h2>Welcome to PanPal!</h2>
-</div>
+<script>
+    const exploreBtn = document.getElementById("explore");
+  explore?.addEventListener("click", async () => {
+    window.location.href = "suggest.html";
+  });
+  </script>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script  src="data.js"></script>
 </body>
