@@ -76,8 +76,6 @@ async function fetchProfiles() {
         if (userProfile) {
             console.log('User Profile', userProfile);
 
-            const userFirstName = userProfile[0].firstName;
-            document.getElementById('welcome').innerHTML = `Welcome to PanPal, ${userFirstName}!`;
             
             profileDataDiv.innerHTML = `
                 <p><strong>First Name:</strong> ${userProfile[0].firstName}</p>

@@ -96,7 +96,7 @@ async function getUserProfile() {
 async function saveRecipe(recipe) {
   const userProfile = await getUserProfile();
 
-
+ 
   if (!userProfile) {
       console.error("No logged-in user found. Please log in.");
       return;
