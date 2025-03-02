@@ -12,12 +12,6 @@ main{
     margin-right: 20px;
 }
 
-.log{
-    margin-left: 1100px;
-    width: 40px;
-    margin-top: 40px;
-}
-
 
 #newRec{
     width: 10%;
@@ -42,17 +36,16 @@ main{
 
 
 .cont {
-   
     background: rgba(255, 255, 255, 0.85);
     padding: 2rem;
     border-radius: 15px;
     position: absolute;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: center;
     width: 100%;
-    left: 40%;
     max-width: 400px;
-    margin-top: 50px; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .cont h2 {
@@ -72,25 +65,27 @@ main{
 
 .cont input:focus {
     outline: none;
-    border: 2px solid #FFA500;
+    border: 2px solid #ee5f3b;
 }
 
 .cont button {
-    width: 48%;
+    width: 75%;
     padding: 0.75rem;
     margin-top: 1rem;
-    border: none;
     border-radius: 8px;
-    background: linear-gradient(90deg, #FFA500, #FFD700);
+    border: none;
+    outline: 3px solid #ee5f3b;
+    background: linear-gradient(90deg, #ff6600, #ffa600);
     color: white;
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s ease;
+    
 }
 
 .cont button:hover {
     transform: translateY(-5px);
-    background: linear-gradient(90deg, #FF8C00, #FFC300);
+    background: linear-gradient(90deg, #ff6600, #ffa600);
 }
 
 .cont #error-msg {
@@ -100,17 +95,12 @@ main{
 }
 
 
-#welcome{
-    margin-top: 17%;
-    margin-left:  43%;
+.left{
+    font-family: 'Montserrat', sans-serif;
     font-size: 50px;
-    font-family: "Jost", serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: Jost;
 }
 
-h1{
+.center{
     margin-top: 20px;
     text-align: center;
     font-size: 50px;
@@ -184,7 +174,6 @@ h1{
     padding: 20px;
 }
 
-/* Adapt to smaller screens */
 @media (max-width: 1200px) {
     .grid-container {
         grid-template-columns: repeat(3, 1fr); 
@@ -210,7 +199,8 @@ padding: 0.75rem;
 margin-top: 1rem;
 border: none;
 border-radius: 8px;
-background: linear-gradient(90deg, #FFA500, #FFD700);
+outline: 3px solid #ee5f3b;
+background: linear-gradient(90deg, #ff6600, #ffa600);
 color: white;
 font-size: 1rem;
 cursor: pointer;
@@ -225,31 +215,31 @@ font-size: 20px;
 }
 
 .box {
-    background-color: #f0f0f0; /* Background for each box */
+    background-color: #f0f0f0; 
     padding: 10px;
     text-align: center;
-    border-radius: 8px; /* Rounded corners for the box */
-    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow to the bottom-left */
-    min-width: 250px; /* Minimum width for each box */
+    border-radius: 8px;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 250px; 
     min-height: 250px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .box:hover {
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.05);
 }
 
 /* Featured Grid Container */
 .highlight-grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Makes it responsive */
-    gap: 100px; /* Spacing between boxes */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 100px; 
     padding: 20px;
-    border-bottom: 5px solid #000000; /* Adds a nice separator */
-    margin-bottom: 20px; /* Adds spacing below the highlight grid */
-    background-color: #f0f0f0; /* Optional: gives a subtle background to highlight section */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a slight shadow to the entire bar */
+    border-bottom: 5px solid #000000; 
+    margin-bottom: 20px;
+    background-color: #f0f0f0; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Highlight Box */
@@ -262,18 +252,17 @@ font-size: 20px;
     min-width: 250px;
     min-height: 250px;
     cursor: pointer;
-    transition: transform 0.3s ease; /* Adds hover effect for a smooth zoom */
+    transition: transform 0.3s ease; 
 }
 
-/* Highlight Box Hover Effect */
 .highlight-box:hover {
-    transform: scale(1.05); /* Slight zoom effect */
+    transform: scale(1.05);
 }
 
 #profile-contain {
     margin: 0 auto;    
     margin-top: 100px;
-    background-color: #f7f7f7; /* Light gray box */
+    background-color: #f7f7f7;
     padding: 20px;
     border-radius: 10px;
     width: 750px;
@@ -287,11 +276,9 @@ font-size: 20px;
     margin: 10px 0;
 }
 
-/* Buttons */
-
 .profile-buttons {
-    flex: 1; /* Makes the buttons take equal space */
-    margin: 0 10px; /* Adds space between the buttons */
+    flex: 1; 
+    margin: 0 10px;
     background-color: black;
     color: white;
     border: none;
@@ -306,7 +293,6 @@ font-size: 20px;
     background-color: #D72638;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     h1, #profile-data, .profile-buttons {
         margin-left: 20px;
@@ -326,4 +312,14 @@ font-size: 20px;
     border-radius: 5px;
 }
 
+#frontLogo {
+    max-width: 50%; 
+    height: auto; 
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.container{
+    justify-content: left;
+}
 

@@ -68,6 +68,7 @@ async function getUserProfile() {
 
 
 
+
 async function fetchProfiles() {
     const session = await getSession();
     console.log("Fetched session:", session);
@@ -88,10 +89,13 @@ async function fetchProfiles() {
     }
 }
 
-
-fetchProfiles().catch((error) => {
+if (window.location.pathname.includes("/profile.html")) {
+  console.log("Fetching profiles...");
+  fetchProfiles().catch((error) => {
     console.log('Error', error);
 })
+}
+
 
 
 async function setHeader(){
@@ -204,10 +208,13 @@ async function fetchSavedRecipes() {
     });
   }
  
-  document.addEventListener("DOMContentLoaded", function() {
-    renderSavedRecipes().catch((error) => {
-      console.log('Error rendering saved recipes:', error);
+  if (window.location.pathname.includes("/saved.html")) {
+    document.addEventListener("DOMContentLoaded", function() {
+      renderSavedRecipes().catch((error) => {
+        console.log('Error rendering saved recipes:', error);
+      });
     });
-  });
+  }
+ 
 
   
