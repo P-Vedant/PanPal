@@ -24,23 +24,25 @@ async function createRecipe() {
     return;
   }
 
-  let imageUrl = null;
+  let imageURL = null;
   if (file) {
     console.log("Uploading image...");
-    imageUrl = await uploadImage(file);
-    if (!imageUrl) {
+    imageURL = await uploadImage(file);
+    if (!imageURL) {
       alert("Error uploading image. Please try again.");
       return;
     } else {
-      console.log("Image URL successfully generated:", imageUrl);
+      console.log("Image URL successfully generated:", imageURL);
     }
   }
 
-  const { data, error } = await supabase.from("recipes").insert([{
+  const { data, error } = await supabase
+  .from("recipes")
+  .insert([{
     name: name,
     ingredients: ingredients,
     instructions: instructions,
-    imageURL: imageUrl,
+    imageURL: imageURL
   }]).select();
 
   if (error) {
@@ -51,7 +53,6 @@ async function createRecipe() {
     saveRecipe(recipeId).catch((error) => {
       console.log("Error", error);
     });
-    window.location.href = "saved.html";
   }
 }
 
@@ -64,22 +65,19 @@ async function uploadImage(file) {
         return null;
     }
     
-    const { data: publicData, error: urlError } = supabase.storage.from('images').getPublicUrl(filePath);
+    const { data: publicData, error: urlError } = supabase
+    .storage
+    .from('images')
+    .getPublicUrl(filePath)
+
 
     if (urlError) {
         console.error("Error retrieving public URL:", urlError);
         return null;
     }
 
-    const publicURL = publicData?.publicURL;
-
-    if (!publicURL) {
-        console.error("Error retrieving public URL");
-        return null;
-    }
-
-    console.log("Public URL:", publicURL);  // You should see the correct URL now
-    return publicURL;
+    console.log("Public URL:", publicData);  // You should see the correct URL now
+    return publicData;
 }
 
 async function getSession() {
@@ -137,7 +135,7 @@ async function saveRecipe(recipe) {
       user_id: userProfile.id,
       recipe_id: recipe,
     }]);
-
+  window.location.href = "saved.html";
   if (saveError) {
     console.error("Error saving recipe:", saveError);
   } else {

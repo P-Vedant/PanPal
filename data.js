@@ -65,10 +65,6 @@ async function getUserProfile() {
     }
 }
 
-
-
-
-
 async function fetchProfiles() {
     const session = await getSession();
     console.log("Fetched session:", session);
@@ -95,20 +91,6 @@ if (window.location.pathname.includes("/profile.html")) {
     console.log('Error', error);
 })
 }
-
-
-
-async function setHeader(){
-    const session = await getSession()
-    if (session){
-        const userProfile = await getUserProfile()
-        if (userProfile){
-            const header = document.getElementById("savedHeader");
-            header.textContent = userProfile[0].firstName + "'s Saved Recipies"
-        }
-    }
-}
-
 
 document.addEventListener("DOMContentLoaded", function() {
     const navLinks = document.querySelectorAll(".navbar a");
@@ -138,17 +120,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function fetchSavedRecipes() {
     const session = await getSession();
-    if (!session || !session.user || !session.user.id) {
+    const userId = session.user.id
+    if (!session || !session.user || !userId) {
       console.error("No logged-in user found or user ID is missing.");
       return [];
     }
- 
+    
     try {
       const { data: savedRecipeIds, error: savedRecipeError } = await supabase
         .from("saved_recipes")
         .select("recipe_id")
-        .eq("user_id", session.user.id);
- 
+        .eq("user_id", userId);
+
       if (savedRecipeError) {
         console.error("Error fetching saved recipe IDs:", savedRecipeError);
         return [];
