@@ -76,8 +76,8 @@ async function uploadImage(file) {
         return null;
     }
 
-    console.log("Public URL:", publicData);  // You should see the correct URL now
-    return publicData;
+    console.log("Public URL:", publicData.publicUrl);  // You should see the correct URL now
+    return publicData.publicUrl;
 }
 
 async function getSession() {

@@ -145,9 +145,9 @@ async function fetchSavedRecipes() {
  
       const { data: recipes, error: recipeError } = await supabase
         .from("recipes")
-        .select("id, name, ingredients, instructions")
+        .select("id, name, ingredients, instructions, imageURL")
         .in("id", recipeIds);
- 
+
       if (recipeError) {
         console.error("Error fetching recipe details:", recipeError);
         return [];
@@ -180,12 +180,9 @@ async function fetchSavedRecipes() {
     savedRecipes.forEach(recipe => {
       const recipeDiv = document.createElement("div");
       recipeDiv.classList.add("box");
-
-
       recipeDiv.innerHTML = `
-        <h3>${recipe.name}</h3>
-        <p><strong>Ingredients:</strong> ${recipe.ingredients}</p>
-        <p><strong>Instructions:</strong> ${recipe.instructions}</p>
+      <img src="${recipe.imageURL}" alt="${recipe.name}">  
+      <h3>${recipe.name}</h3>
       `;
       recipesContainer.appendChild(recipeDiv);
     });
