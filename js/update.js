@@ -6,7 +6,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const displayBtn = document.getElementById("displayBtn");
 displayBtn?.addEventListener("click", async () => {
-  window.location.href = "display.html";
+  window.location.href = "../html/display.html";
 });
 
 

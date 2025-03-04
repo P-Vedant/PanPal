@@ -16,18 +16,18 @@ loginBtn?.addEventListener("click", async () => {
   if (error) {
     document.getElementById("error-msg").textContent = error.message;
   } else {
-    window.location.href = "display.html";
+    window.location.href = "../html/display.html";
   }
 });
 
 const signupBtnIndex = document.getElementById("signupBtn-index");
 signupBtnIndex?.addEventListener("click", async () => {
-  window.location.href = "signup.html";
+  window.location.href = "../html/signup.html";
 })
 
 const loginBtnSignup = document.getElementById("loginBtn-signup");
 loginBtnSignup?.addEventListener("click", async () => {
-  window.location.href = "index.html";
+  window.location.href = "../html/index.html";
 });
 
 //Signup
@@ -59,7 +59,7 @@ signupBtn?.addEventListener("click", async () => {
     if (insertError) {
       document.getElementById("error-msg").textContent = insertError.message;
     } else {
-      window.location.href = "index.html";
+      window.location.href = "../html/index.html";
     }
   }
 });

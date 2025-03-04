@@ -9,7 +9,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const updateBtn = document.getElementById("updateBtn");
 updateBtn?.addEventListener("click", async () => {
-  window.location.href = "update.html";
+  window.location.href = "../html/update.html";
 });
 
 /* Log Out User */
@@ -20,7 +20,7 @@ logoutBtnDisplay?.addEventListener("click", async () => {
     console.error("Error logging out:", error);
     return;
   }
-  window.location.href = "logout.html";
+  window.location.href = "../html/logout.html";
 });
 
 const profileDataDiv = document.getElementById('profile-data');
@@ -163,7 +163,7 @@ async function isLoggedIn() {
   /* Check for Auth User and Returns to Login Screen If Not */
   supabase.auth.getUser().then(({ data: { user } }) => {
     if (!user) {
-      window.location.href = "index.html";
+      window.location.href = "../html/index.html";
     }
   }).catch(error => {
     console.log('Error getting user: ', error);
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() { //Navigation bar
 
   const newRec = document.getElementById("newRec");
       newRec?.addEventListener("click", async () => {
-           window.location.href = "create.html";
+           window.location.href = "../html/create.html";
   });
 });
 

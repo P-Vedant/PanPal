@@ -135,7 +135,7 @@ async function saveRecipe(recipe) {
       user_id: userProfile.id,
       recipe_id: recipe,
     }]);
-  window.location.href = "saved.html";
+  window.location.href = "../html/saved.html";
   if (saveError) {
     console.error("Error saving recipe:", saveError);
   } else {
