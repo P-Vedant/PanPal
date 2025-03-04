@@ -23,16 +23,26 @@
 
     <div class = "cont">
         <h1 id="make"> Make a Recipe! </h1>
-        <input class = "txtCreate" id = "name" type = text placeholder= "Insert Recipe Name">
-        <input class = "txtCreate" id = "ingredients" type = text placeholder= "Insert Ingredients">
-        <input class = "txtCreate" id = "instructions" type = text placeholder= "Insert Instructions">
+        <div class="input-container">
+            <input class="txtCreate" id="name" type="text" placeholder="Insert Recipe Name">
+          </div>
+
+          <div class="input-container">
+            <input class="txtCreate" id="ingredients" type="text" placeholder="Insert Ingredients">
+            <button class ="plus-btn" id="add-ingredients">+</button>
+          </div>
+
+          <div class="input-container">
+            <input class="txtCreate" id="instructions" type="text" placeholder="Insert Instructions">
+            <button class ="plus-btn" id="add-instructions">+</button>
+          </div>
 
         <input class="txtCreate" id="recipe-image" type="file" accept="image/*">
         <div id="image-preview" style="display: none;">
             <h3>Image Preview:</h3>
             <img id="preview-img" src="" alt="Image Preview" width="200">
         </div>
-        <button id = "recCreate">Create!</button>
+        <button class = "gradientBtn" id = "createBtn">Create!</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src = "../js/recipe.js"></script>

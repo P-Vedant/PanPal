@@ -4,18 +4,45 @@ const supabaseUrl = "https://bhfttxqkobtckescbnyy.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJoZnR0eHFrb2J0Y2tlc2Nibnl5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjc3ODY3OTEsImV4cCI6MjA0MzM2Mjc5MX0.xrOUNxM4tchKJHCTiEKhcM-kH1k0nTmJh9gNvMp5dOk";
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const createBtn = document.getElementById("recCreate");
-
+const createBtn = document.getElementById("createBtn");
 createBtn?.addEventListener("click", async () => {
   createRecipe().catch((error) => {
     console.log("Error", error);
   });
 });
 
+const addIntructBtn = document.getElementById("add-instructions");
+const addIngredBtn = document.getElementById("add-ingredients");
+
+const ingredients = [];
+const instructions = [];
+
+addIntructBtn?.addEventListener("click", async () => {
+  const instruction = document.getElementById("instructions").value;
+  if (!instruction) {
+    alert("Please fill out the instruction field.");
+    return;
+  }
+  instructions.push(instruction);
+  document.getElementById("instructions").value = "";
+  console.log("Instructions:", instructions);
+});
+
+addIngredBtn?.addEventListener("click", async () => {
+  ingredient = document.getElementById("ingredients").value;
+  if (!ingredient) {
+    alert("Please fill out the ingredient field.");
+    return;
+  }
+  ingredients.push(ingredient);
+  document.getElementById("ingredients").value = "";
+  console.log("Ingredients:", ingredients);
+});
+
+
+
 async function createRecipe() {
   const name = document.getElementById("name").value;
-  const ingredients = document.getElementById("ingredients").value;
-  const instructions = document.getElementById("instructions").value;
   const fileInput = document.getElementById("recipe-image");
   const file = fileInput.files[0];
 
