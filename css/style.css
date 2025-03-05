@@ -38,7 +38,7 @@ main{
     color: #333;
 }
 
-.cont input {
+.txtCreate{
     width: 93%;
     padding: 0.75rem;
     margin: 0.5rem 0;
@@ -327,7 +327,6 @@ font-size: 20px;
 .txtCreate {
     flex: 1;
     padding: 10px;
-    margin-right: 10px;
 }
   
 .input-container .plus-btn{
@@ -338,7 +337,6 @@ font-size: 20px;
     border: none;
     border-radius: 5px;
     margin-left: 10px;
-    outline: solid 3px green;
 }
   
 .input-container .plus-btn:hover {
@@ -356,3 +354,20 @@ font-size: 20px;
     justify-content: left;
 }
 
+.rateTxt{
+    width: 93%;
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.3);
+    gap: 10px;
+}
+
+.recipeHeader{
+    font-size: 50px;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 20px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Info</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul>
+            <img src="../images/logo.png">
+            <li><a href="../html/display.html" id="homeLink">Home</a></li>
+            <li><a href="../html/profile.html" id="profileLink">Profile</a></li>
+            <li><a href="../html/saved.html" id="savedLink">Saved Recipes</a></li>
+            <li><a href="../html/suggest.html" id="suggestLink">Suggested Recipes</a></li>
+        </ul>
+    </nav>
+    
+    <h1 class ="recipeHeader">Recipe Info:</h1>
+    <div class = "recipe-contain">
+        <div class = "recipe-data">
+
+            <div>
+                <img src = "" id = "recipeImage">
+            </div>
+
+            <div>
+                <h2>Recipe Name:</h2>
+                <p id = "recipeName"></p>
+
+            </div>
+
+            <div>
+                <h2>Ingredients:</h2>
+                <p id = "recipeIngredients"></p>
+            </div>
+
+            <div>
+                <h2>Instructions:</h2>
+                <p id = "recipeInstructions"></p>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src = "../js/data.js"></script>
+</body>
+</html>

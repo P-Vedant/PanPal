@@ -143,6 +143,7 @@ async function renderSavedRecipes() {
     recipesContainer.innerHTML = "<p>No saved recipes found.</p>";
     return;
   }
+
   /* Resets All Elements Left Prior */
   recipesContainer.innerHTML = "";
 
@@ -154,8 +155,33 @@ async function renderSavedRecipes() {
     <img src="${recipe.imageURL}" alt="${recipe.name}">  
     <h3>${recipe.name}</h3>
     `;
+
+    /* When Clicked, Shows the Recipe */
+    recipeDiv.addEventListener("click", () => {
+      showRecipe(recipe);
+    });
+
     recipesContainer.appendChild(recipeDiv);
   });
+}
+
+async function showRecipe(recipe) {
+  /* Stores the Recipe in Local Storage */
+  localStorage.setItem("recipe", JSON.stringify(recipe));
+
+  window.location.href = '../html/recipe.html';
+}
+
+async function loadRecipe() {
+  console.log("Loaded");
+
+  const recipe = JSON.parse(localStorage.getItem("recipe"));
+  const recipeImage = document.getElementById("recipeImage");
+  const recipeName = document.getElementById("recipeName");
+  const recipeIngredients = document.getElementById("recipeIngredients");
+  const recipeInstructions = document.getElementById("recipeInstructions");
+
+  recipeImage.src = recipe.imageURL;
 }
 
 /* Checks Logged In Status*/
@@ -233,6 +259,18 @@ if (window.location.pathname.includes("/suggest.html") ) {
 
 /* Run Functions for Home Page */
 if (window.location.pathname.includes("/display.html") ) {
+
+  isLoggedIn().catch((error) => {
+    console.log('Error checking if user is logged in:', error);
+  });
+}
+
+/* Run Functions for Recipe Page */
+if (window.location.pathname.includes("/recipe.html") ) {
+  
+  loadRecipe().catch((error) => {
+    console.log('Error loading recipe:', error);
+  });
 
   isLoggedIn().catch((error) => {
     console.log('Error checking if user is logged in:', error);

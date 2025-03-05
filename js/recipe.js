@@ -43,11 +43,20 @@ addIngredBtn?.addEventListener("click", async () => {
 
 async function createRecipe() {
   const name = document.getElementById("name").value;
+  const isPublic = document.getElementById("isPublic").checked;
+  const spice = document.getElementById("spice").value;
+  const sweet = document.getElementById("sweet").value;
+  const savor = document.getElementById("savor").value;
+  const salty = document.getElementById("salty").value;
+  const profiles = [spice, sweet, savor, salty];
   const fileInput = document.getElementById("recipe-image");
   const file = fileInput.files[0];
 
-  if (!name || !ingredients || !instructions) {
+  if (!name || !ingredients || !instructions || !spice || !sweet || !savor || !salty) {
     alert("Please fill out all fields.");
+    return;
+  } else if (!(profiles.every(v => (v > 0 && v < 6)))) {
+    alert("Please ensure that the flavor profiles are between 1 and 5.");
     return;
   }
 
@@ -62,13 +71,18 @@ async function createRecipe() {
       console.log("Image URL successfully generated:", imageURL);
     }
   }
-
+  
   const { data, error } = await supabase
   .from("recipes")
   .insert([{
     name: name,
     ingredients: ingredients,
     instructions: instructions,
+    spice: spice,
+    sweet: sweet,
+    savor: savor,
+    salty: salty,
+    isPublic: isPublic,
     imageURL: imageURL
   }]).select();
 
