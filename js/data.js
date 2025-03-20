@@ -165,6 +165,91 @@ async function renderSavedRecipes() {
   });
 }
 
+/* Getting Each Public Recipe */
+async function fetchPublicRecipes(){
+  /* Ensures There Is a User to Fetch Recipes From */
+  const session = await getSession();
+  const userId = session.user.id
+
+  if (!session || !session.user || !userId) {
+    console.error("No logged-in user found or user ID is missing.");
+    return [];
+  }
+
+  try {
+    /* Returns Row Conating Recipe ID with Mathcing User ID */
+    const { data: recipesId, error: fetchRecipeError } = await supabase
+      .from("recipes")
+      .select("id")
+      .eq("isPublic", true);
+
+    if (fetchRecipeError) {
+      console.error("Error fetching public recipe IDs:", fetchRecipeError);
+      return [];
+    }
+ 
+    if (!recipesId || recipesId.length === 0) {
+      console.log("No public recipes found.");
+      return [];
+    }
+    /* Creates Array Exclusivly Containging the Recipe IDs */
+    const recipeIds = recipesId.map(item => item.id);
+    console.log(recipeIds)
+
+    /* Createas a New Array Containing All the Information for Each Recipe Based on 'recipeIds' ID List */
+    const { data: recipes, error: recipeError } = await supabase
+      .from("recipes")
+      .select("id, name, ingredients, instructions, imageURL")
+      .in("id", recipeIds);
+
+    if (recipeError) {
+      console.error("Error fetching recipe details:", recipeError);
+      return [];
+    }
+ 
+    return recipes;
+  } catch (error) {
+    console.error("Unexpected error fetching saved recipes:", error);
+    return [];
+  }
+}
+
+/* Displays Each Recipe Marked Public */
+async function renderPublicRecipes(){
+  const savedRecipes = await fetchPublicRecipes();
+  const recipesContainer = document.getElementById("grid-container");
+  
+  /* Ensures the Div Element Exists and User Posseses At Least One Saved Recipe */
+  if (!recipesContainer) {
+    console.error('Element with ID "grid-container" not found.');
+    return;
+  }
+  if (savedRecipes.length === 0) {
+    recipesContainer.innerHTML = "<p>No saved recipes found.</p>";
+    return;
+  }
+
+  /* Resets All Elements Left Prior */
+  recipesContainer.innerHTML = "";
+
+  /* For Each Object in 'savedRecipes', Creates a New Div Element Under the Class Name 'box' and Sets the Contents to the Associated Image and Name and Adds to the General Container */
+  savedRecipes.forEach(recipe => {
+    const recipeDiv = document.createElement("div");
+    recipeDiv.classList.add("box");
+    recipeDiv.innerHTML = `
+    <img src="${recipe.imageURL}" alt="${recipe.name}">  
+    <h3>${recipe.name}</h3>
+    `;
+
+    /* When Clicked, Shows the Recipe */
+    recipeDiv.addEventListener("click", () => {
+      showRecipe(recipe);
+    });
+
+    recipesContainer.appendChild(recipeDiv);
+  });
+}
+
 async function showRecipe(recipe) {
   /* Stores the Recipe in Local Storage */
   localStorage.setItem("recipe", JSON.stringify(recipe));
@@ -179,9 +264,33 @@ async function loadRecipe() {
   const recipeImage = document.getElementById("recipeImage");
   const recipeName = document.getElementById("recipeName");
   const recipeIngredients = document.getElementById("recipeIngredients");
+  const ingredArray = recipe.ingredients;
   const recipeInstructions = document.getElementById("recipeInstructions");
+  const instrucArray = recipe.instructions
 
   recipeImage.src = recipe.imageURL;
+  recipeName.innerHTML = recipe.name
+
+  var ingredList = '<ul>';
+
+  for (var i = 0; i < ingredArray.length; i++) {
+    ingredList += '<li>' + ingredArray[i] + '</li>';
+  }
+
+  ingredList += '</ul>'
+
+  recipeIngredients.innerHTML = ingredList
+
+  var instructList = '<ul>';
+
+  for (var i = 0; i < instrucArray.length; i++) {
+    instructList += '<li>' + instrucArray[i] + '</li>';
+  }
+
+  instructList += '</ul>'
+
+  recipeInstructions.innerHTML = instructList
+    
 }
 
 /* Checks Logged In Status*/
@@ -251,6 +360,11 @@ if (window.location.pathname.includes("/profile.html") ) {
 
 /* Run Functions for Suggested Recipes */
 if (window.location.pathname.includes("/suggest.html") ) {
+  document.addEventListener("DOMContentLoaded", function() {
+    renderPublicRecipes().catch((error) => {
+    console.log('Error rendering public recipes:', error);
+    });
+  });
 
   isLoggedIn().catch((error) => {
     console.log('Error checking if user is logged in:', error);
