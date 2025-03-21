@@ -26,6 +26,12 @@ logoutBtnDisplay?.addEventListener("click", async () => {
 const profileDataDiv = document.getElementById('profile-data');
 
 const addRecipe = document.getElementById('addRecipeBtn')
+addRecipe?.addEventListener("click", async () => {
+  await savePublicRecipe().catch((error) => {
+    console.log('Error saving public recipe:', error);
+  });
+  window.location.href = "../html/saved.html";
+});
 
 var showBtn = null
 
@@ -307,6 +313,34 @@ async function isLoggedIn() {
   }).catch(error => {
     console.log('Error getting user: ', error);
   });
+}
+
+async function savePublicRecipe() {
+  const recipe = JSON.parse(localStorage.getItem("recipe"));
+
+  /* Ensures There Is a User to Fetch Recipes From */
+  if (!recipe) {
+    console.error("No recipe found in local storage.");
+    return;
+  } else {
+    console.log("Recipe found in local storage:", recipe);
+  }
+
+  const userId = (await getSession()).user.id;
+
+  console.log(recipe)
+
+  const { error } = await supabase
+  .from('saved_recipes')
+  .insert({ user_id: userId, recipe_id: recipe.id })
+
+  if (error) {
+    console.error("Error saving public recipe:", error);
+    return;
+  }
+
+  alert("Recipe saved successfully!")
+  return;
 }
 
 /* Navigation Bar */
