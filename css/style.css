@@ -373,6 +373,8 @@ font-size: 20px;
     color: #000000;
     font-family: 'Montserrat', sans-serif;
     margin-left: 20px;
+    width: 85%;
+    margin: 0;
 }
 
 #recipeImage{
@@ -380,4 +382,26 @@ font-size: 20px;
     width: auto;
     max-width: 300px;
     max-height: 300px;  
+}
+
+.titleContain{
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 10px 20px; /* Add some spacing */
+}
+.recipe-contain{
+    padding-left: 10px;
+}
+
+#addRecipeBtn{
+    padding: 2vh 3vw;
+    border: none;
+    cursor: pointer;
+    background-color: #45a049;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    border-radius: 10px;
+    visibility: visible;
 }

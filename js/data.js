@@ -25,6 +25,10 @@ logoutBtnDisplay?.addEventListener("click", async () => {
 
 const profileDataDiv = document.getElementById('profile-data');
 
+const addRecipe = document.getElementById('addRecipeBtn')
+
+var showBtn = null
+
 async function getSession() {
     const { data, error } = await supabase.auth.getSession();
     if (error) {
@@ -333,6 +337,8 @@ document.addEventListener("DOMContentLoaded", function() { //Navigation bar
 
 /* Run Functions for Saved Recipes */
 if (window.location.pathname.includes("/saved.html")) {
+  showBtn = false;
+  localStorage.setItem("showBtn", showBtn);
 
   isLoggedIn().catch((error) => {
     console.log('Error checking if user is logged in:', error);
@@ -360,6 +366,9 @@ if (window.location.pathname.includes("/profile.html") ) {
 
 /* Run Functions for Suggested Recipes */
 if (window.location.pathname.includes("/suggest.html") ) {
+  showBtn = true;
+  localStorage.setItem("showBtn", showBtn);
+
   document.addEventListener("DOMContentLoaded", function() {
     renderPublicRecipes().catch((error) => {
     console.log('Error rendering public recipes:', error);
@@ -381,7 +390,15 @@ if (window.location.pathname.includes("/display.html") ) {
 
 /* Run Functions for Recipe Page */
 if (window.location.pathname.includes("/recipe.html") ) {
-  
+  let storedShowBtn = localStorage.getItem("showBtn");
+  showBtn = storedShowBtn === "true";
+
+  if (showBtn) {
+      addRecipe.style.visibility = "visible";
+  } else {
+      addRecipe.style.visibility = "hidden";
+  }
+
   loadRecipe().catch((error) => {
     console.log('Error loading recipe:', error);
   });
@@ -390,4 +407,3 @@ if (window.location.pathname.includes("/recipe.html") ) {
     console.log('Error checking if user is logged in:', error);
   });
 }
-
